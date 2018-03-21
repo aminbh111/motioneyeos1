@@ -11,7 +11,7 @@ if [ -z "$1" ]; then
 fi
 
 set -e # exit at first error
-# test change
+# test change 1
 
 board=$1
 target=${*:2}
