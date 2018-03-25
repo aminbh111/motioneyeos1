@@ -24,19 +24,14 @@ gzip=$(which pigz 2> /dev/null || which gzip 2> /dev/null)
 test -f $basedir/.build-env && source $basedir/.build-env
 
 # OS name
-
-if [ -n "$THINGOS_NAME" ]; then
-    osname=$THINGOS_NAME
+if [ -n "$THINGOS_SHORT_NAME" ]; then
+    osname=$THINGOS_SHORT_NAME
 else
     osname=$(source $basedir/board/common/overlay/etc/version && echo $os_short_name)
 fi
 
 # OS version
 if [ -n "$THINGOS_VERSION" ]; then
-    # set internal OS version from env variable
-    if [ -f $outputdir/target/etc/version ]; then
-        sed -r -i "s/os_version=\".*\"/os_version=\"$THINGOS_VERSION\"/" $outputdir/target/etc/version
-    fi
     osversion=$THINGOS_VERSION
 else
     osversion=$(source $basedir/board/common/overlay/etc/version && echo $os_version)
@@ -115,8 +110,11 @@ elif [ "$target" == "clean-target" ]; then
 
     echo "target is clean"
 
+elif [ "$target" == "all" ]; then
+    make O=$outputdir all
+
 elif [ -n "$target" ]; then
-    make O=$outputdir $target
+    $0 $b all
 
 else
     make O=$outputdir all
