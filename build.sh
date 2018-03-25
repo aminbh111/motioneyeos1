@@ -119,7 +119,7 @@ elif [ -n "$target" ]; then
     make O=$outputdir $target
 
 else
-    make O=$outputdir all
+    #make O=$outputdir all
     echo "build successful"
 fi
 
