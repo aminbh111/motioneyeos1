@@ -89,29 +89,29 @@ elif [ "$target" == "mkrelease" ]; then
     rm -f $outputdir/images/$osname-$board-$osversion.img
 
 elif [ "$target" == "clean-target" ]; then
-    if [ -d $outputdir/target ]; then
-        echo "removing target directory"
-        rm -rf $outputdir/target/*
+    #if [ -d $outputdir/target ]; then
+    #    echo "removing target directory"
+    #    rm -rf $outputdir/target/*
 
-        echo "removing staging directory"
-        rm -rf $outputdir/staging/*
-    fi
+    #    echo "removing staging directory"
+    #    rm -rf $outputdir/staging/*
+    #fi
 
-    if [ -d $outputdir/build ]; then
-        echo "removing .stamp_target_installed files"
-        find $outputdir/build -name .stamp_target_installed | xargs -r rm
+    #if [ -d $outputdir/build ]; then
+    #    echo "removing .stamp_target_installed files"
+    #    find $outputdir/build -name .stamp_target_installed | xargs -r rm
 
-        echo "removing .stamp_staging_installed files"
-        find $outputdir/build -name .stamp_staging_installed | xargs -r rm
+    #    echo "removing .stamp_staging_installed files"
+    #    find $outputdir/build -name .stamp_staging_installed | xargs -r rm
 
-        echo "removing .stamp_host_installed files"
-        find $outputdir/build -name .stamp_host_installed | xargs -r rm
-    fi
+    #    echo "removing .stamp_host_installed files"
+    #    find $outputdir/build -name .stamp_host_installed | xargs -r rm
+    #fi
 
-    if [ -f $outputdir/.config ]; then
-        echo "removing .config file"
-        rm -f $outputdir/.config
-    fi
+    #if [ -f $outputdir/.config ]; then
+    #    echo "removing .config file"
+    #    rm -f $outputdir/.config
+    #fi
 
     echo "target is clean"
 
@@ -119,7 +119,7 @@ elif [ -n "$target" ]; then
     make O=$outputdir $target
 
 else
-    #make O=$outputdir all
+    make O=$outputdir all
     echo "build successful"
 fi
 
