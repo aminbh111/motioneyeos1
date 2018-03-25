@@ -13,6 +13,7 @@ fi
 set -e # exit at first error
 # test change 1
 # test change 2
+# test change 3
 
 board=$1
 target=${*:2}
